@@ -6,14 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Band Web</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/font/themify-icons-font/themify-icons/themify-icons.css">
 </head>
 <body>
-    <!--
-        1. Ctrl + D 
-        2. Alt + Shift (Ấn giữ)
-        3. Giữ Alt + Click
-    -->
     <div id="main">
         <div id="header">
             <!--ul#nav>li*5>a-->
@@ -36,6 +32,10 @@
             </ul>
             <div class="search-btn">
                 <i class="search-icon ti-search"></i>
+            </div>
+
+            <div id="mobile-menu" class="mobile-menu-btn">
+                <i class="menu-icon ti-menu"></i>
             </div>
         </div>
 
@@ -160,6 +160,38 @@
             <p class="copyright">Powered by <a href="#">w3.css</a></p>
         </div>
     </div>
+
+    <script>
+        var header = document.getElementById('header')
+        var mobileMenu = document.getElementById('mobile-menu')
+        // var headerHight = header.clientHeight;
+        
+        // Đóng mở menu mobile-menu
+        mobileMenu.onclick = function() {
+            let isClose = header.clientHeight === 46;
+            if (isClose) {
+                header.style.height = 'auto';
+            } else {
+                header.style.height = null;
+            }
+        }
+
+        // Tự động đóng khi chọn menu
+        var menuItems = document.querySelectorAll('#nav li a[href*="#"]')
+        for (var i=0; i<menuItems.length; i++) {
+            var menuItem = menuItems[i];
+
+            menuItem.onclick = function(event) {
+                var isParentMenu = this.nextElementSibling && this.nextElementSibling.classList.contains('subnav')
+                if(!isParentMenu) {
+                    header.style.height = null; 
+                } else {
+                    event.preventDefault();
+                }
+            }
+        }
+
+    </script>
 
     <div class="modal js-modal">
         <div class="modal-container js-modal-container">
