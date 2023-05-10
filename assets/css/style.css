@@ -25,6 +25,10 @@ html {
     clear: both;
 }
 
+.mt-16 {
+    margin-top: 16px !important;
+}
+
 .column {
     float: left;
     padding-left: 8px;
@@ -259,7 +263,7 @@ html {
 }
 
 .places-list {
-    margin-top: 32px;
+    margin-top: 16px;
     overflow: hidden;
     padding-bottom: 48px;
 }
@@ -297,6 +301,8 @@ html {
     display: inline-block;
     margin-top: 15px;
     border: none;
+    appearance: none;
+    -webkit-appearance: none;
 }
 .place-buy-btn:hover {
     background-color: #ccc;
